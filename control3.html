@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <ul class="menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="base_de_datos.html">Base de datos</a></li>
+            <li><a href="problemas.html">Problemas</a></li>
+            <li>
+                <a href="#">Controles</a>
+                <ul class="submenu">
+                    <li><a href="control1.html">Registro</a></li>
+                    <li><a href="control2.html">Reserva</a></li>
+                    <li><a href="control4.html">Crear Tarea</a></li>
+                    <li><a href="control5.html">Modificar Tarea</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Generación de Factura</h1>
+        <p>El módulo de facturación permite a los usuarios completar el pago de sus reservas y obtener un recibo oficial de la transacción. A continuación, se detallan los pasos para generar una factura correctamente.</p>
+
+        <h2>Paso 1: Selección de la Reserva</h2>
+        <p>Para iniciar el proceso, el usuario debe seleccionar la reserva que desea pagar. El sistema mostrará una lista con todas las reservas registradas a su nombre. Es importante verificar que la reserva seleccionada sea la correcta, ya que esto determinará los detalles y el monto de la factura.</p>
+
+        <div class="image-frame">
+            <img src="Imagen/factura1.png" alt="Pantalla inicial de la factura">
+        </div>
+
+        <div class="image-frame">
+            <img src="Imagen/factura2.png" alt="Selección de reserva para generar factura">
+        </div>
+
+        <h2>Paso 2: Visualización del Desglose de Costos</h2>
+        <p>Una vez seleccionada la reserva, el usuario debe hacer clic en el botón <strong>"Mostrar precios"</strong> para visualizar el desglose de costos. Este paso es fundamental para revisar todos los cargos asociados, incluyendo:</p>
+        <ul>
+            <li><strong>Tarifa de la habitación:</strong> Basado en la duración de la estancia y el tipo de habitación elegida.</li>
+            <li><strong>IVA</strong> Cual ha sido en coste de IVA</li>
+            <li><strong>Preció sin nada</strong> Preció sin IVA y otras bonificaciones.</li>
+        </ul>
+
+        <div class="image-frame">
+            <img src="Imagen/factura3.png" alt="Desglose de precios de la reserva">
+        </div>
+
+        <h2>Paso 3: Selección del Método de Pago</h2>
+        <p>El usuario deberá elegir el método de pago que mejor se adapte a sus necesidades. Entre las opciones disponibles se encuentran:</p>
+        <ul>
+            <li><strong>Tarjeta de crédito/débito:</strong> Procesamiento rápido y seguro.</li>
+            <li><strong>Transferencia bancaria:</strong> Puede requerir validación adicional.</li>
+            <li><strong>Pago en efectivo:</strong> Disponible solo en algunos establecimientos.</li>
+        </ul>
+
+        <div class="image-frame">
+            <img src="Imagen/factura4.png" alt="Selección del método de pago">
+        </div>
+
+        <h2>Paso 4: Realización del Pago</h2>
+        <p>Después de seleccionar el método de pago, el usuario debe hacer clic en el botón <strong>"Pagar"</strong>. El sistema procesará la transacción y generará la factura automáticamente.</p>
+
+        <div class="image-frame">
+            <img src="Imagen/factura5.png" alt="Botón de pago y generación de la factura">
+        </div>
+
+        <h2>Paso 5: Confirmación del Pago</h2>
+        <p>Si el pago se ha realizado con éxito, el sistema mostrará una notificación de confirmación. En esta etapa, el usuario podrá descargar o imprimir su factura para futuras referencias.</p>
+
+        <div class="image-frame">
+            <img src="Imagen/factura6.png" alt="Notificación de pago exitoso">
+        </div>
+
+        <h2>Errores Comunes y Soluciones</h2>
+        <ul>
+            <li><strong>Reserva no encontrada:</strong> Verificar que la reserva esté registrada en el sistema.</li>
+            <li><strong>Pago rechazado:</strong> Asegurar que la tarjeta tenga fondos suficientes o probar con otro método de pago.</li>
+            <li><strong>Error en el desglose de costos:</strong> Contactar con soporte en caso de discrepancias en los montos.</li>
+        </ul>
+
+        <h2>Conclusión</h2>
+        <p>Siguiendo estos pasos, el usuario podrá completar el proceso de pago y generar su factura sin inconvenientes. En caso de dudas, se recomienda contactar al equipo de soporte.</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,790 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Pràctica. Programació Hotel</title><style>
+	/* cspell:disable-file */
+	/* webkit printing magic: print all background colors */
+	html {
+		-webkit-print-color-adjust: exact;
+	}
+	* {
+		box-sizing: border-box;
+		-webkit-print-color-adjust: exact;
+	}
+	
+	html,
+	body {
+		margin: 0;
+		padding: 0;
+	}
+	@media only screen {
+		body {
+			margin: 2em auto;
+			max-width: 900px;
+			color: rgb(55, 53, 47);
+		}
+	}
+	
+	body {
+		line-height: 1.5;
+		white-space: pre-wrap;
+	}
+	
+	a,
+	a.visited {
+		color: inherit;
+		text-decoration: underline;
+	}
+	
+	.pdf-relative-link-path {
+		font-size: 80%;
+		color: #444;
+	}
+	
+	h1,
+	h2,
+	h3 {
+		letter-spacing: -0.01em;
+		line-height: 1.2;
+		font-weight: 600;
+		margin-bottom: 0;
+	}
+	
+	.page-title {
+		font-size: 2.5rem;
+		font-weight: 700;
+		margin-top: 0;
+		margin-bottom: 0.75em;
+	}
+	
+	h1 {
+		font-size: 1.875rem;
+		margin-top: 1.875rem;
+	}
+	
+	h2 {
+		font-size: 1.5rem;
+		margin-top: 1.5rem;
+	}
+	
+	h3 {
+		font-size: 1.25rem;
+		margin-top: 1.25rem;
+	}
+	
+	.source {
+		border: 1px solid #ddd;
+		border-radius: 3px;
+		padding: 1.5em;
+		word-break: break-all;
+	}
+	
+	.callout {
+		border-radius: 3px;
+		padding: 1rem;
+	}
+	
+	figure {
+		margin: 1.25em 0;
+		page-break-inside: avoid;
+	}
+	
+	figcaption {
+		opacity: 0.5;
+		font-size: 85%;
+		margin-top: 0.5em;
+	}
+	
+	mark {
+		background-color: transparent;
+	}
+	
+	.indented {
+		padding-left: 1.5em;
+	}
+	
+	hr {
+		background: transparent;
+		display: block;
+		width: 100%;
+		height: 1px;
+		visibility: visible;
+		border: none;
+		border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+	}
+	
+	img {
+		max-width: 100%;
+	}
+	
+	@media only print {
+		img {
+			max-height: 100vh;
+			object-fit: contain;
+		}
+	}
+	
+	@page {
+		margin: 1in;
+	}
+	
+	.collection-content {
+		font-size: 0.875rem;
+	}
+	
+	.column-list {
+		display: flex;
+		justify-content: space-between;
+	}
+	
+	.column {
+		padding: 0 1em;
+	}
+	
+	.column:first-child {
+		padding-left: 0;
+	}
+	
+	.column:last-child {
+		padding-right: 0;
+	}
+	
+	.table_of_contents-item {
+		display: block;
+		font-size: 0.875rem;
+		line-height: 1.3;
+		padding: 0.125rem;
+	}
+	
+	.table_of_contents-indent-1 {
+		margin-left: 1.5rem;
+	}
+	
+	.table_of_contents-indent-2 {
+		margin-left: 3rem;
+	}
+	
+	.table_of_contents-indent-3 {
+		margin-left: 4.5rem;
+	}
+	
+	.table_of_contents-link {
+		text-decoration: none;
+		opacity: 0.7;
+		border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+	}
+	
+	table,
+	th,
+	td {
+		border: 1px solid rgba(55, 53, 47, 0.09);
+		border-collapse: collapse;
+	}
+	
+	table {
+		border-left: none;
+		border-right: none;
+	}
+	
+	th,
+	td {
+		font-weight: normal;
+		padding: 0.25em 0.5em;
+		line-height: 1.5;
+		min-height: 1.5em;
+		text-align: left;
+	}
+	
+	th {
+		color: rgba(55, 53, 47, 0.6);
+	}
+	
+	ol,
+	ul {
+		margin: 0;
+		margin-block-start: 0.6em;
+		margin-block-end: 0.6em;
+	}
+	
+	li > ol:first-child,
+	li > ul:first-child {
+		margin-block-start: 0.6em;
+	}
+	
+	ul > li {
+		list-style: disc;
+	}
+	
+	ul.to-do-list {
+		padding-inline-start: 0;
+	}
+	
+	ul.to-do-list > li {
+		list-style: none;
+	}
+	
+	.to-do-children-checked {
+		text-decoration: line-through;
+		opacity: 0.375;
+	}
+	
+	ul.toggle > li {
+		list-style: none;
+	}
+	
+	ul {
+		padding-inline-start: 1.7em;
+	}
+	
+	ul > li {
+		padding-left: 0.1em;
+	}
+	
+	ol {
+		padding-inline-start: 1.6em;
+	}
+	
+	ol > li {
+		padding-left: 0.2em;
+	}
+	
+	.mono ol {
+		padding-inline-start: 2em;
+	}
+	
+	.mono ol > li {
+		text-indent: -0.4em;
+	}
+	
+	.toggle {
+		padding-inline-start: 0em;
+		list-style-type: none;
+	}
+	
+	/* Indent toggle children */
+	.toggle > li > details {
+		padding-left: 1.7em;
+	}
+	
+	.toggle > li > details > summary {
+		margin-left: -1.1em;
+	}
+	
+	.selected-value {
+		display: inline-block;
+		padding: 0 0.5em;
+		background: rgba(206, 205, 202, 0.5);
+		border-radius: 3px;
+		margin-right: 0.5em;
+		margin-top: 0.3em;
+		margin-bottom: 0.3em;
+		white-space: nowrap;
+	}
+	
+	.collection-title {
+		display: inline-block;
+		margin-right: 1em;
+	}
+	
+	.page-description {
+		margin-bottom: 2em;
+	}
+	
+	.simple-table {
+		margin-top: 1em;
+		font-size: 0.875rem;
+		empty-cells: show;
+	}
+	.simple-table td {
+		height: 29px;
+		min-width: 120px;
+	}
+	
+	.simple-table th {
+		height: 29px;
+		min-width: 120px;
+	}
+	
+	.simple-table-header-color {
+		background: rgb(247, 246, 243);
+		color: black;
+	}
+	.simple-table-header {
+		font-weight: 500;
+	}
+	
+	time {
+		opacity: 0.5;
+	}
+	
+	.icon {
+		display: inline-block;
+		max-width: 1.2em;
+		max-height: 1.2em;
+		text-decoration: none;
+		vertical-align: text-bottom;
+		margin-right: 0.5em;
+	}
+	
+	img.icon {
+		border-radius: 3px;
+	}
+	
+	.user-icon {
+		width: 1.5em;
+		height: 1.5em;
+		border-radius: 100%;
+		margin-right: 0.5rem;
+	}
+	
+	.user-icon-inner {
+		font-size: 0.8em;
+	}
+	
+	.text-icon {
+		border: 1px solid #000;
+		text-align: center;
+	}
+	
+	.page-cover-image {
+		display: block;
+		object-fit: cover;
+		width: 100%;
+		max-height: 30vh;
+	}
+	
+	.page-header-icon {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+	
+	.page-header-icon-with-cover {
+		margin-top: -0.72em;
+		margin-left: 0.07em;
+	}
+	
+	.page-header-icon img {
+		border-radius: 3px;
+	}
+	
+	.link-to-page {
+		margin: 1em 0;
+		padding: 0;
+		border: none;
+		font-weight: 500;
+	}
+	
+	p > .user {
+		opacity: 0.5;
+	}
+	
+	td > .user,
+	td > time {
+		white-space: nowrap;
+	}
+	
+	input[type="checkbox"] {
+		transform: scale(1.5);
+		margin-right: 0.6em;
+		vertical-align: middle;
+	}
+	
+	p {
+		margin-top: 0.5em;
+		margin-bottom: 0.5em;
+	}
+	
+	.image {
+		border: none;
+		margin: 1.5em 0;
+		padding: 0;
+		border-radius: 0;
+		text-align: center;
+	}
+	
+	.code,
+	code {
+		background: rgba(135, 131, 120, 0.15);
+		border-radius: 3px;
+		padding: 0.2em 0.4em;
+		border-radius: 3px;
+		font-size: 85%;
+		tab-size: 2;
+	}
+	
+	code {
+		color: #eb5757;
+	}
+	
+	.code {
+		padding: 1.5em 1em;
+	}
+	
+	.code-wrap {
+		white-space: pre-wrap;
+		word-break: break-all;
+	}
+	
+	.code > code {
+		background: none;
+		padding: 0;
+		font-size: 100%;
+		color: inherit;
+	}
+	
+	blockquote {
+		font-size: 1.25em;
+		margin: 1em 0;
+		padding-left: 1em;
+		border-left: 3px solid rgb(55, 53, 47);
+	}
+	
+	.bookmark {
+		text-decoration: none;
+		max-height: 8em;
+		padding: 0;
+		display: flex;
+		width: 100%;
+		align-items: stretch;
+	}
+	
+	.bookmark-title {
+		font-size: 0.85em;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		height: 1.75em;
+		white-space: nowrap;
+	}
+	
+	.bookmark-text {
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.bookmark-info {
+		flex: 4 1 180px;
+		padding: 12px 14px 14px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	
+	.bookmark-image {
+		width: 33%;
+		flex: 1 1 180px;
+		display: block;
+		position: relative;
+		object-fit: cover;
+		border-radius: 1px;
+	}
+	
+	.bookmark-description {
+		color: rgba(55, 53, 47, 0.6);
+		font-size: 0.75em;
+		overflow: hidden;
+		max-height: 4.5em;
+		word-break: break-word;
+	}
+	
+	.bookmark-href {
+		font-size: 0.75em;
+		margin-top: 0.25em;
+	}
+	
+	.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+	.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+	.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+	.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+	.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+	.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+	.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+	.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+	.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+	.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+	.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+	.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+	.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+	.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+	.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+	.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+	.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+	.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+	.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+	.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+	.highlight-default {
+		color: rgba(55, 53, 47, 1);
+	}
+	.highlight-gray {
+		color: rgba(120, 119, 116, 1);
+		fill: rgba(120, 119, 116, 1);
+	}
+	.highlight-brown {
+		color: rgba(159, 107, 83, 1);
+		fill: rgba(159, 107, 83, 1);
+	}
+	.highlight-orange {
+		color: rgba(217, 115, 13, 1);
+		fill: rgba(217, 115, 13, 1);
+	}
+	.highlight-yellow {
+		color: rgba(203, 145, 47, 1);
+		fill: rgba(203, 145, 47, 1);
+	}
+	.highlight-teal {
+		color: rgba(68, 131, 97, 1);
+		fill: rgba(68, 131, 97, 1);
+	}
+	.highlight-blue {
+		color: rgba(51, 126, 169, 1);
+		fill: rgba(51, 126, 169, 1);
+	}
+	.highlight-purple {
+		color: rgba(144, 101, 176, 1);
+		fill: rgba(144, 101, 176, 1);
+	}
+	.highlight-pink {
+		color: rgba(193, 76, 138, 1);
+		fill: rgba(193, 76, 138, 1);
+	}
+	.highlight-red {
+		color: rgba(212, 76, 71, 1);
+		fill: rgba(212, 76, 71, 1);
+	}
+	.highlight-default_background {
+		color: rgba(55, 53, 47, 1);
+	}
+	.highlight-gray_background {
+		background: rgba(248, 248, 247, 1);
+	}
+	.highlight-brown_background {
+		background: rgba(244, 238, 238, 1);
+	}
+	.highlight-orange_background {
+		background: rgba(251, 236, 221, 1);
+	}
+	.highlight-yellow_background {
+		background: rgba(251, 243, 219, 1);
+	}
+	.highlight-teal_background {
+		background: rgba(237, 243, 236, 1);
+	}
+	.highlight-blue_background {
+		background: rgba(231, 243, 248, 1);
+	}
+	.highlight-purple_background {
+		background: rgba(248, 243, 252, 1);
+	}
+	.highlight-pink_background {
+		background: rgba(252, 241, 246, 1);
+	}
+	.highlight-red_background {
+		background: rgba(253, 235, 236, 1);
+	}
+	.block-color-default {
+		color: inherit;
+		fill: inherit;
+	}
+	.block-color-gray {
+		color: rgba(120, 119, 116, 1);
+		fill: rgba(120, 119, 116, 1);
+	}
+	.block-color-brown {
+		color: rgba(159, 107, 83, 1);
+		fill: rgba(159, 107, 83, 1);
+	}
+	.block-color-orange {
+		color: rgba(217, 115, 13, 1);
+		fill: rgba(217, 115, 13, 1);
+	}
+	.block-color-yellow {
+		color: rgba(203, 145, 47, 1);
+		fill: rgba(203, 145, 47, 1);
+	}
+	.block-color-teal {
+		color: rgba(68, 131, 97, 1);
+		fill: rgba(68, 131, 97, 1);
+	}
+	.block-color-blue {
+		color: rgba(51, 126, 169, 1);
+		fill: rgba(51, 126, 169, 1);
+	}
+	.block-color-purple {
+		color: rgba(144, 101, 176, 1);
+		fill: rgba(144, 101, 176, 1);
+	}
+	.block-color-pink {
+		color: rgba(193, 76, 138, 1);
+		fill: rgba(193, 76, 138, 1);
+	}
+	.block-color-red {
+		color: rgba(212, 76, 71, 1);
+		fill: rgba(212, 76, 71, 1);
+	}
+	.block-color-default_background {
+		color: inherit;
+		fill: inherit;
+	}
+	.block-color-gray_background {
+		background: rgba(248, 248, 247, 1);
+	}
+	.block-color-brown_background {
+		background: rgba(244, 238, 238, 1);
+	}
+	.block-color-orange_background {
+		background: rgba(251, 236, 221, 1);
+	}
+	.block-color-yellow_background {
+		background: rgba(251, 243, 219, 1);
+	}
+	.block-color-teal_background {
+		background: rgba(237, 243, 236, 1);
+	}
+	.block-color-blue_background {
+		background: rgba(231, 243, 248, 1);
+	}
+	.block-color-purple_background {
+		background: rgba(248, 243, 252, 1);
+	}
+	.block-color-pink_background {
+		background: rgba(252, 241, 246, 1);
+	}
+	.block-color-red_background {
+		background: rgba(253, 235, 236, 1);
+	}
+	.select-value-color-uiBlue { background-color: undefined; }
+	.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+	.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+	.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+	.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+	.select-value-color-transparentGray { background-color: undefined; }
+	.select-value-color-translucentGray { background-color: undefined; }
+	.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+	.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+	.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+	.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+	.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+	.select-value-color-pageGlass { background-color: undefined; }
+	.select-value-color-washGlass { background-color: undefined; }
+	
+	.checkbox {
+		display: inline-flex;
+		vertical-align: text-bottom;
+		width: 16;
+		height: 16;
+		background-size: 16px;
+		margin-left: 2px;
+		margin-right: 5px;
+	}
+	
+	.checkbox-on {
+		background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+	}
+	
+	.checkbox-off {
+		background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+	}
+		
+	</style></head><body><article id="191f67f9-10dd-80c9-80e9-e557eecad5ea" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/nasa_ibm_type_704.jpg" style="object-position:center 19.999999999999996%"/><h1 class="page-title">Pràctica. Programació Hotel</h1><p class="page-description"></p></header><div class="page-body"><p id="191f67f9-10dd-80ec-a1b9-dc8ca9f727af" class="">Nom i Cognoms: Andriy Fedolyak Ivaniv</p><p id="191f67f9-10dd-8052-8975-c516fae73502" class="">Curs: DAM1 2024-2025</p><p id="191f67f9-10dd-8072-99db-e76a9c76e675" class="">Institut: F. Vidal i Barraquer</p><p id="191f67f9-10dd-802f-82a2-ff11a353d68e" class="">Mòdul: Programació</p><nav id="191f67f9-10dd-80eb-ae60-c68cd816d383" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#191f67f9-10dd-8082-bf74-c17a1f0bf580"><strong>Pràctica - Base de dades</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#191f67f9-10dd-8014-8e64-e1c2dbbc9f1c">Disseny conceptual</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#191f67f9-10dd-80c9-84ef-c8554681137f">Disseny lògic-relacional</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#193f67f9-10dd-806b-9efc-e6a5280e26ef">Taules amb dades representatives</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#193f67f9-10dd-805a-9cb9-f4ada5ecda33">Taula PERSONA</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#193f67f9-10dd-8048-afa8-e1785406a251">Taula CLIENT</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#193f67f9-10dd-80aa-a3d4-c42b41d0d554">Taula EMPLEAT</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#193f67f9-10dd-8036-be04-df2b5287f9da">Taula RESERVA</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#193f67f9-10dd-805e-acc1-f2a4a95225eb">Taula HABITACIÓ</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#193f67f9-10dd-807a-a006-f21ef490238f">Taula FACTURA</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#193f67f9-10dd-805f-ad29-c98bbd437bfb">Taula TASCA</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#193f67f9-10dd-80ef-94b5-ec0d43068b6a">Taula REALITZAR</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#193f67f9-10dd-802e-9ab8-ef089d8dfed0">Sentencies SQL:LDD</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19ff67f9-10dd-8081-9334-d8f6221fcd66">Diagrama UML</a></div></nav><h1 id="191f67f9-10dd-8082-bf74-c17a1f0bf580" class=""><strong>Pràctica - Base de dades</strong></h1><h2 id="191f67f9-10dd-8014-8e64-e1c2dbbc9f1c" class="">Disseny conceptual</h2><figure id="191f67f9-10dd-80b9-845a-e2de2bfe7c66" class="image"><a href="image.png"><img style="width:709.9861450195312px" src="image.png"/></a></figure><figure id="1b2f67f9-10dd-8070-a7ec-db8315d640d8" class="image"><a href="image%201.png"><img style="width:709.9861450195312px" src="image%201.png"/></a></figure><h2 id="191f67f9-10dd-80c9-84ef-c8554681137f" class="">Disseny lògic-relacional</h2><p id="191f67f9-10dd-8036-8893-eee8e166e92b" class="">PERSONA (<span style="border-bottom:0.05em solid">id_persona</span>, nom, cognom, adreça, document_identitat, data_naixament, telèfon, email).</p><p id="191f67f9-10dd-8035-b365-fb6884c6095f" class="">CLIENT (<span style="border-bottom:0.05em solid">id_client</span>, data_registre, tipus_client, targeta_client, id_persona).<div class="indented"><p id="191f67f9-10dd-8080-9bca-d73af7e433e9" class="">On (id_persona) és clau forana que fa referència a la taula PERSONA (id_persona).</p></div></p><p id="191f67f9-10dd-8045-816d-cfe04d35c45f" class="">EMPLEAT (<span style="border-bottom:0.05em solid">id_empleat</span>, llocFeina, data_contratacio, salariBrut, estat_lanoral, id_persona).<div class="indented"><p id="191f67f9-10dd-8071-8517-ee54156f7355" class="">On (id_persona) és clau forana que fa referència a la taula PERSONA (id_persona).</p></div></p><p id="191f67f9-10dd-8060-bdd1-cb0969d2e6fe" class="">RESERVA (<span style="border-bottom:0.05em solid">id_reserva</span>, data_reserva, data_inici, data_fi, tipus_reserva, tipus_IVA, preu_total_reserva, id_client, id_habitacio).<div class="indented"><p id="191f67f9-10dd-80df-b079-effce7e33234" class="">On (id_client) és clau forana que fa referència a la taula CLIENT (id_client).</p><p id="191f67f9-10dd-8065-a9b8-fc574f8a5dec" class="">On (id_habitacio) és clau forana que fa referència a la taula CLIENT (id_client).</p></div></p><p id="191f67f9-10dd-8042-88d8-fb7610769cb8" class="">HABITACIÓ (<span style="border-bottom:0.05em solid">id_habitacio</span>, numero_habitacio, tipus, capacitat, preu_nit_AD, preu_nit_MP, estat, descripcio).</p><p id="191f67f9-10dd-8001-9323-fd35f01de676" class="">FACTURA (<span style="border-bottom:0.05em solid">id_factura</span>, data_emisio, metode_pagament, base_imposable, IVA, total, id_reserva).<div class="indented"><p id="1b2f67f9-10dd-8004-b8c4-f8024414195f" class="">On (id_reserva) és clau forana que fa referència a la taula RESERVA (id_reserva).</p></div></p><p id="191f67f9-10dd-8045-9e91-d555ae50c1c0" class="">TASCA (<span style="border-bottom:0.05em solid">id_tasca</span>, descripcio, data_creacio, data_ejecucio, estat).</p><p id="191f67f9-10dd-80d6-8c16-c8861ff65185" class="">REALITZAR(<span style="border-bottom:0.05em solid">id_tasca, id_empleat</span>).<div class="indented"><p id="191f67f9-10dd-8006-b645-c15abeb87f37" class="">On (id_empleat) és clau forana que fa referència a la taula EMPLEAT (id_empleat).</p><p id="191f67f9-10dd-8029-ba1e-d2d3022d54c7" class="">On (id_tasca) és clau forana que fa referència a la taula TASCA (id_tasca).</p></div></p><h2 id="193f67f9-10dd-806b-9efc-e6a5280e26ef" class="">Taules amb dades representatives</h2><h3 id="193f67f9-10dd-805a-9cb9-f4ada5ecda33" class="">Taula PERSONA</h3><table id="193f67f9-10dd-80a3-a75e-df80952bcd55" class="simple-table"><thead class="simple-table-header"><tr id="193f67f9-10dd-8010-bd9d-dd43f92eb300"><th id="r\CY" class="simple-table-header-color simple-table-header"> id_persona</th><th id="lkN:" class="simple-table-header-color simple-table-header">nom</th><th id="Mr[A" class="simple-table-header-color simple-table-header"><strong>cognom</strong></th><th id="MMgQ" class="simple-table-header-color simple-table-header">adreça</th><th id="lmxy" class="simple-table-header-color simple-table-header">document_identitat</th><th id="UpfG" class="simple-table-header-color simple-table-header">data_naixament</th><th id="JqCZ" class="simple-table-header-color simple-table-header">telèfon</th><th id="soB}" class="simple-table-header-color simple-table-header">email</th></tr></thead><tbody><tr id="193f67f9-10dd-8059-b8fa-f9286c65f138"><td id="r\CY" class="">1</td><td id="lkN:" class="">Marc</td><td id="Mr[A" class="">Soler</td><td id="MMgQ" class="">C/ Major 12, Barcelona</td><td id="lmxy" class="">12345678X</td><td id="UpfG" class="">1990-05-14</td><td id="JqCZ" class="">678123456</td><td id="soB}" class=""><a href="mailto:marc.soler@email.com">marc.soler@email.com</a></td></tr><tr id="193f67f9-10dd-8013-b8ca-d54f15caa3df"><td id="r\CY" class="">2</td><td id="lkN:" class="">Laura</td><td id="Mr[A" class="">Gómez</td><td id="MMgQ" class="">Av. Diagonal 200, Girona</td><td id="lmxy" class="">23456789Y</td><td id="UpfG" class="">1985-08-22</td><td id="JqCZ" class="">679234567</td><td id="soB}" class=""><a href="mailto:laura.gomez@email.com">laura.gomez@email.com</a></td></tr><tr id="193f67f9-10dd-80c5-a82a-f6e03ea9a8d0"><td id="r\CY" class="">3</td><td id="lkN:" class="">Joan</td><td id="Mr[A" class="">Ferrer</td><td id="MMgQ" class="">C/ Aragó 34, Lleida</td><td id="lmxy" class="">34567890Z</td><td id="UpfG" class="">1992-12-03</td><td id="JqCZ" class="">680345678</td><td id="soB}" class=""><a href="mailto:joan.ferrer@email.com">joan.ferrer@email.com</a></td></tr></tbody></table><h3 id="193f67f9-10dd-8048-afa8-e1785406a251" class="">Taula CLIENT</h3><table id="193f67f9-10dd-8003-8c6d-f61865c639da" class="simple-table"><thead class="simple-table-header"><tr id="193f67f9-10dd-8023-8d56-ed7690a24c23"><th id="r\CY" class="simple-table-header-color simple-table-header"> id_client</th><th id="lkN:" class="simple-table-header-color simple-table-header">data_registre</th><th id="Mr[A" class="simple-table-header-color simple-table-header">tipus_client</th><th id="MMgQ" class="simple-table-header-color simple-table-header">targeta_client</th><th id="lmxy" class="simple-table-header-color simple-table-header"> id_persona</th></tr></thead><tbody><tr id="193f67f9-10dd-8047-99f4-f561b395db1b"><td id="r\CY" class="">1</td><td id="lkN:" class="">2024-02-07</td><td id="Mr[A" class="">Premium</td><td id="MMgQ" class="">123456789012</td><td id="lmxy" class="">1</td></tr><tr id="193f67f9-10dd-80ee-a47c-fb7989220c62"><td id="r\CY" class="">2</td><td id="lkN:" class="">2024-02-07</td><td id="Mr[A" class="">Estàndard</td><td id="MMgQ" class="">234567890123</td><td id="lmxy" class="">2</td></tr><tr id="193f67f9-10dd-8064-b718-e1b0f2f63817"><td id="r\CY" class="">3</td><td id="lkN:" class="">2024-02-07</td><td id="Mr[A" class="">VIP</td><td id="MMgQ" class="">345678901234</td><td id="lmxy" class="">3</td></tr></tbody></table><h3 id="193f67f9-10dd-80aa-a3d4-c42b41d0d554" class="">Taula EMPLEAT</h3><table id="193f67f9-10dd-8071-b3b4-da9ba18a99f0" class="simple-table"><thead class="simple-table-header"><tr id="193f67f9-10dd-80fd-bf85-cccae23b3f60"><th id="r\CY" class="simple-table-header-color simple-table-header"> id_empleat</th><th id="lkN:" class="simple-table-header-color simple-table-header">llocFeina</th><th id="Mr[A" class="simple-table-header-color simple-table-header">data_contratacio</th><th id="MMgQ" class="simple-table-header-color simple-table-header">salariBrut</th><th id="UpfG" class="simple-table-header-color simple-table-header"> id_persona</th><th id="|I_P" class="simple-table-header-color simple-table-header">estat_laboral</th></tr></thead><tbody><tr id="193f67f9-10dd-80b0-9339-c57c653c2a53"><td id="r\CY" class="">1</td><td id="lkN:" class="">Recepcionista</td><td id="Mr[A" class="">2022-06-15</td><td id="MMgQ" class="">25,000€</td><td id="UpfG" class="">1</td><td id="|I_P" class="">Actiu</td></tr><tr id="193f67f9-10dd-80be-9693-de61d4d1d678"><td id="r\CY" class="">2</td><td id="lkN:" class="">Cambrer</td><td id="Mr[A" class="">2021-09-20</td><td id="MMgQ" class="">22,000€</td><td id="UpfG" class="">2</td><td id="|I_P" class="">Baixa</td></tr><tr id="193f67f9-10dd-80a8-99a5-ffc82eb752c0"><td id="r\CY" class="">3</td><td id="lkN:" class="">Responsable Neteja</td><td id="Mr[A" class="">2023-03-10</td><td id="MMgQ" class="">26,500€</td><td id="UpfG" class="">3</td><td id="|I_P" class="">Permis</td></tr></tbody></table><h3 id="193f67f9-10dd-8036-be04-df2b5287f9da" class="">Taula RESERVA</h3><table id="193f67f9-10dd-8007-bab7-e69479a27200" class="simple-table"><thead class="simple-table-header"><tr id="193f67f9-10dd-804a-94b5-c707b236912b"><th id="r\CY" class="simple-table-header-color simple-table-header"> id_reserva</th><th id="lkN:" class="simple-table-header-color simple-table-header">data_reserva</th><th id="Mr[A" class="simple-table-header-color simple-table-header">data_inici</th><th id="MMgQ" class="simple-table-header-color simple-table-header">data_fi</th><th id="lmxy" class="simple-table-header-color simple-table-header">tipus_reserva</th><th id="UpfG" class="simple-table-header-color simple-table-header">tipus_IVA</th><th id="JqCZ" class="simple-table-header-color simple-table-header">preu_total_reserva</th><th id="soB}" class="simple-table-header-color simple-table-header"> id_client</th><th id="Fpv?" class="simple-table-header-color simple-table-header"> id_habitacio</th></tr></thead><tbody><tr id="193f67f9-10dd-802b-af35-f9b8c9802e0f"><td id="r\CY" class="">1</td><td id="lkN:" class="">2024-02-01</td><td id="Mr[A" class="">2024-03-10</td><td id="MMgQ" class="">2024-03-15</td><td id="lmxy" class="">AD</td><td id="UpfG" class="">10%</td><td id="JqCZ" class="">500€</td><td id="soB}" class="">1</td><td id="Fpv?" class="">1</td></tr><tr id="193f67f9-10dd-8091-995e-dbf75c391f2d"><td id="r\CY" class="">2</td><td id="lkN:" class="">2024-02-03</td><td id="Mr[A" class="">2024-04-05</td><td id="MMgQ" class="">2024-04-10</td><td id="lmxy" class="">MP</td><td id="UpfG" class="">10%</td><td id="JqCZ" class="">850€</td><td id="soB}" class="">2</td><td id="Fpv?" class="">2</td></tr><tr id="193f67f9-10dd-80ec-9170-d9d5032587b6"><td id="r\CY" class="">3</td><td id="lkN:" class="">2024-02-05</td><td id="Mr[A" class="">2024-05-12</td><td id="MMgQ" class="">2024-05-18</td><td id="lmxy" class="">AD</td><td id="UpfG" class="">21%</td><td id="JqCZ" class="">1,500€</td><td id="soB}" class="">3</td><td id="Fpv?" class="">3</td></tr></tbody></table><h3 id="193f67f9-10dd-805e-acc1-f2a4a95225eb" class="">Taula HABITACIÓ</h3><table id="193f67f9-10dd-8056-ae47-fc683db37a83" class="simple-table"><thead class="simple-table-header"><tr id="193f67f9-10dd-809e-945b-d2a0511be5e5"><th id="r\CY" class="simple-table-header-color simple-table-header"> id_habitacio</th><th id="lkN:" class="simple-table-header-color simple-table-header">numero_habitacio</th><th id="Mr[A" class="simple-table-header-color simple-table-header">tipus</th><th id="MMgQ" class="simple-table-header-color simple-table-header">capacitat</th><th id="lmxy" class="simple-table-header-color simple-table-header">preu_nit_AD</th><th id="UpfG" class="simple-table-header-color simple-table-header">preu_nit_MP</th><th id="PMXV" class="simple-table-header-color simple-table-header">estat</th><th id="K:@}" class="simple-table-header-color simple-table-header">descripcio</th></tr></thead><tbody><tr id="193f67f9-10dd-8066-aebd-e363e0eb3e04"><td id="r\CY" class="">1</td><td id="lkN:" class="">101</td><td id="Mr[A" class="">Estàndard</td><td id="MMgQ" class="">2</td><td id="lmxy" class="">80€</td><td id="UpfG" class="">120€</td><td id="PMXV" class="">Lliure</td><td id="K:@}" class="">Habitació doble amb vistes al jardí</td></tr><tr id="193f67f9-10dd-8058-819d-d92b49ba911b"><td id="r\CY" class="">2</td><td id="lkN:" class="">202</td><td id="Mr[A" class="">Premium</td><td id="MMgQ" class="">3</td><td id="lmxy" class="">120€</td><td id="UpfG" class="">160€</td><td id="PMXV" class="">Ocupada</td><td id="K:@}" class="">Habitació espaiosa amb balcó</td></tr><tr id="193f67f9-10dd-8087-be2d-eea08165b436"><td id="r\CY" class="">3</td><td id="lkN:" class="">305</td><td id="Mr[A" class="">Suite</td><td id="MMgQ" class="">4</td><td id="lmxy" class="">200€</td><td id="UpfG" class="">260€</td><td id="PMXV" class="">Lliure</td><td id="K:@}" class="">Suite de luxe amb jacuzzi</td></tr></tbody></table><h3 id="193f67f9-10dd-807a-a006-f21ef490238f" class="">Taula FACTURA</h3><table id="193f67f9-10dd-8058-81d7-e184f5b8f9b1" class="simple-table"><thead class="simple-table-header"><tr id="193f67f9-10dd-8053-94fa-e31d28c5b5b7"><th id="r\CY" class="simple-table-header-color simple-table-header"> id_factura</th><th id="lkN:" class="simple-table-header-color simple-table-header">data_emisio</th><th id="Mr[A" class="simple-table-header-color simple-table-header">metode_pagament</th><th id="MMgQ" class="simple-table-header-color simple-table-header">base_imposable</th><th id="lmxy" class="simple-table-header-color simple-table-header">IVA</th><th id="UpfG" class="simple-table-header-color simple-table-header">total</th><th id="ZYA:" class="simple-table-header-color simple-table-header">id_reserva</th></tr></thead><tbody><tr id="193f67f9-10dd-80ce-9a6a-f34518344596"><td id="r\CY" class="">1</td><td id="lkN:" class="">2024-02-07</td><td id="Mr[A" class="">Targeta de crèdit</td><td id="MMgQ" class="">500€</td><td id="lmxy" class="">50€</td><td id="UpfG" class="">550€</td><td id="ZYA:" class="">1</td></tr><tr id="193f67f9-10dd-8089-b68c-e29e87525cf0"><td id="r\CY" class="">2</td><td id="lkN:" class="">2024-02-08</td><td id="Mr[A" class="">Transferència</td><td id="MMgQ" class="">850€</td><td id="lmxy" class="">85€</td><td id="UpfG" class="">935€</td><td id="ZYA:" class="">2</td></tr><tr id="193f67f9-10dd-803a-b421-e181b467e499"><td id="r\CY" class="">3</td><td id="lkN:" class="">2024-02-09</td><td id="Mr[A" class="">Efectiu</td><td id="MMgQ" class="">1,500€</td><td id="lmxy" class="">315€</td><td id="UpfG" class="">1,815€</td><td id="ZYA:" class="">3</td></tr></tbody></table><h3 id="193f67f9-10dd-805f-ad29-c98bbd437bfb" class="">Taula TASCA</h3><table id="193f67f9-10dd-8009-a5e1-f7de85f6d7ed" class="simple-table"><thead class="simple-table-header"><tr id="193f67f9-10dd-803b-8907-f044ba58a3fe"><th id="r\CY" class="simple-table-header-color simple-table-header"> id_tasca</th><th id="lkN:" class="simple-table-header-color simple-table-header">descripcio</th><th id="Mr[A" class="simple-table-header-color simple-table-header">data_creacio</th><th id="MMgQ" class="simple-table-header-color simple-table-header">data_ejecucio</th><th id="lmxy" class="simple-table-header-color simple-table-header">estat</th></tr></thead><tbody><tr id="193f67f9-10dd-8045-a820-d1758f1c368c"><td id="r\CY" class="">1</td><td id="lkN:" class="">Neteja de l&#x27;habitació 101</td><td id="Mr[A" class="">2024-02-07</td><td id="MMgQ" class="">2024-02-08</td><td id="lmxy" class="">Completada</td></tr><tr id="193f67f9-10dd-8092-b7e4-f0bddf83adda"><td id="r\CY" class="">2</td><td id="lkN:" class="">Revisió del minibar 202</td><td id="Mr[A" class="">2024-02-07</td><td id="MMgQ" class="">2024-02-09</td><td id="lmxy" class="">En procés</td></tr><tr id="193f67f9-10dd-806e-b63f-c47b34bffa31"><td id="r\CY" class="">3</td><td id="lkN:" class="">Manteniment de la calefacció</td><td id="Mr[A" class="">2024-02-06</td><td id="MMgQ" class="">2024-02-10</td><td id="lmxy" class="">Pendent</td></tr></tbody></table><h3 id="193f67f9-10dd-80ef-94b5-ec0d43068b6a" class="">Taula REALITZAR</h3><table id="193f67f9-10dd-8070-8528-d238e7203e58" class="simple-table"><thead class="simple-table-header"><tr id="193f67f9-10dd-805b-84cc-c6b6cef76e28"><th id="r\CY" class="simple-table-header-color simple-table-header"> id_tasca</th><th id="lkN:" class="simple-table-header-color simple-table-header"> id_empleat</th></tr></thead><tbody><tr id="193f67f9-10dd-800a-862e-ffee2019d8cc"><td id="r\CY" class="">1</td><td id="lkN:" class="">1</td></tr><tr id="193f67f9-10dd-805f-b38e-c2ccb48f2716"><td id="r\CY" class="">2</td><td id="lkN:" class="">2</td></tr><tr id="193f67f9-10dd-8025-a5d5-da60a1dce888"><td id="r\CY" class="">3</td><td id="lkN:" class="">3</td></tr></tbody></table><h2 id="193f67f9-10dd-802e-9ab8-ef089d8dfed0" class="">Sentencies SQL:LDD</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="193f67f9-10dd-806a-9405-c665b5351635" class="code"><code class="language-SQL">CREATE TABLE persona(
+	id_persona INT AUTO_INCREMENT PRIMARY KEY,
+	nom varchar (30) NOT NULL,
+	cognom varchar (30) NOT NULL,
+	adreça varchar (75) NOT NULL,
+	document_identitat varchar (9) NOT NULL,
+	data_naixament DATE NOT NULL,
+	telefon INT (9) NOT NULL,
+	email varchar (30) NOT NULL
+	);</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="193f67f9-10dd-80bf-9f3b-e00286f411d1" class="code"><code class="language-SQL">CREATE TABLE client(
+	id_client INT AUTO_INCREMENT PRIMARY KEY,
+	data_registre DATE NOT NULL,
+	tipus_client varchar (15) NOT NULL,
+	targeta_client INT (12) NOT NULL,
+	id_persona INT NOT NULL,
+	FOREIGN KEY (id_persona) REFERENCES persona (id_persona)
+	);</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="193f67f9-10dd-809e-9789-ff79af0b6c43" class="code"><code class="language-SQL">CREATE TABLE empleat(
+	id_empleat INT AUTO_INCREMENT PRIMARY KEY,
+	llocFeina varchar (25) NOT NULL,
+	data_contratacio DATE NOT NULL,
+	salariBrut DECIMAL (10, 2) NOT NULL,
+	estat_laboral varchar (15) NOT NULL,
+	id_persona INT NOT NULL,
+	FOREIGN KEY (id_persona) REFERENCES persona (id_persona)
+	);</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="193f67f9-10dd-80b4-a894-eab64a3b7b81" class="code"><code class="language-SQL">CREATE TABLE reserva(
+	id_reserva INT AUTO_INCREMENT PRIMARY KEY,
+	data_reserva DATE NOT NULL,
+	data_inici DATE NOT NULL,
+	data_fi DATE NOT NULL,
+	tipus_reserva varchar (2) NOT NULL,
+	tipus_IVA DECIMAL (10, 2) NOT NULL,
+	preu_total_reserva DECIMAL (10, 2) NOT NULL,
+	id_client INT NOT NULL,
+	FOREIGN KEY (id_client) REFERENCES client (id_client),
+	id_habitacio INT NOT NULL,
+	FOREIGN KEY (id_habitacio) REFERENCES habitacio (id_habitacio)
+	);</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="193f67f9-10dd-804b-b0ce-e1f4df0a324a" class="code"><code class="language-SQL">CREATE TABLE habitacio(
+	id_habitacio INT AUTO_INCREMENT PRIMARY KEY,
+	numero_habitacio INT NOT NULL,
+	tipus varchar (15) NOT NULL,
+	capacitat INT NOT NULL,
+	preu_nit_AD DECIMAL (10, 2) NOT NULL,
+	preu_nit_MP DECIMAL (10, 2) NOT NULL,
+	estat varchar (15) NOT NULL,
+	descripcio varchar (85) NOT NULL
+	);</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="193f67f9-10dd-80ac-82c4-c826d2e7b70f" class="code"><code class="language-SQL">CREATE TABLE factura(
+	id_factura INT AUTO_INCREMENT PRIMARY KEY,
+	data_emisio DATE NOT NULL,
+	metode_pagament varchar (25) NOT NULL,
+	base_imposable DECIMAL (10, 2) NOT NULL,
+	IVA DECIMAL (10, 2) NOT NULL,
+	total DECIMAL (10, 2) NOT NULL,
+	id_reserva INT NOT NULL,
+	FOREIGN KEY(id_reserva) REFERENCES reserva(id_reserva)
+	);</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="193f67f9-10dd-804c-9669-f0b5426c0794" class="code"><code class="language-SQL">CREATE TABLE tasca(
+	id_tasca INT AUTO_INCREMENT PRIMARY KEY,
+	descripcio varchar (25) NOT NULL,
+	data_creacio DATE NOT NULL,
+	data_ejecucio DATE NOT NULL,
+	estat varchar (25) NOT NULL
+	);</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="193f67f9-10dd-8033-bf91-d862efe59d1f" class="code"><code class="language-SQL">CREATE TABLE realitzar(
+	id_tasca INT(11),
+	id_empleat INT(11),
+	PRIMARY KEY(id_tasca, id_empleat),
+	FOREIGN KEY(id_tasca) REFERENCES tasca (id_tasca),
+	FOREIGN KEY(id_empleat) REFERENCES empleat (id_empleat)
+	);</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="19cf67f9-10dd-807a-af55-c76a4c53ac83" class="code"><code class="language-SQL">INSERT INTO persona (nom, cognom, adreça, document_identitat, data_naixament, telefon, email) VALUES
+	(&#x27;Marc&#x27;, &#x27;Soler&#x27;, &#x27;C/ Major 12, Barcelona&#x27;, &#x27;12345678X&#x27;, &#x27;1990-05-14&#x27;, &#x27;678123456&#x27;, &#x27;marc.soler@email.com&#x27;),
+	(&#x27;Laura&#x27;, &#x27;Gómez&#x27;, &#x27;Av. Diagonal 200, Girona&#x27;, &#x27;23456789Y&#x27;, &#x27;1985-08-22&#x27;, &#x27;679234567&#x27;, &#x27;laura.gomez@email.com&#x27;),
+	(&#x27;Joan&#x27;, &#x27;Ferrer&#x27;, &#x27;C/ Aragó 34, Lleida&#x27;, &#x27;34567890Z&#x27;, &#x27;1992-12-03&#x27;, &#x27;680345678&#x27;, &#x27;joan.ferrer@email.com&#x27;);
+	
+	INSERT INTO client (data_registre, tipus_client, targeta_client, id_persona) VALUES
+	(&#x27;2024-02-07&#x27;, &#x27;Premium&#x27;, 12345678912, 1),
+	(&#x27;2024-02-07&#x27;, &#x27;Estàndard&#x27;, 23456789123, 2),
+	(&#x27;2024-02-07&#x27;, &#x27;VIP&#x27;, 34567891234, 3);
+	
+	INSERT INTO empleat (llocFeina, data_contratacio, salariBrut, id_persona, estat_laboral) VALUES
+	(&#x27;Recepcionista&#x27;, &#x27;2022-06-15&#x27;, 25000, 1, &#x27;Actiu&#x27;),
+	(&#x27;Cambrer&#x27;, &#x27;2021-09-20&#x27;, 22000, 2, &#x27;Baixa&#x27;),
+	(&#x27;Responsable Neteja&#x27;, &#x27;2023-03-10&#x27;, 26500, 3, &#x27;Permis&#x27;);
+	
+	INSERT INTO habitacio (numero_habitacio, tipus, capacitat, preu_nit_AD, preu_nit_MP, estat, descripcio) VALUES
+	(101, &#x27;Estàndard&#x27;, 2, 80, 120, &#x27;Lliure&#x27;, &#x27;Habitació doble amb vistes al jardí&#x27;),
+	(202, &#x27;Premium&#x27;, 3, 120, 160, &#x27;Ocupada&#x27;, &#x27;Habitació espaiosa amb balcó&#x27;),
+	(305, &#x27;Suite&#x27;, 4, 200, 260, &#x27;Lliure&#x27;, &#x27;Suite de luxe amb jacuzzi&#x27;);
+	
+	
+	INSERT INTO reserva (data_reserva, data_inici, data_fi, tipus_reserva, tipus_IVA, preu_total_reserva, id_client, id_habitacio) VALUES
+	(&#x27;2024-02-01&#x27;, &#x27;2024-03-10&#x27;, &#x27;2024-03-15&#x27;, &#x27;AD&#x27;, 10, 500, 1, 1),
+	(&#x27;2024-02-03&#x27;, &#x27;2024-04-05&#x27;, &#x27;2024-04-10&#x27;, &#x27;MP&#x27;, 10, 850, 2, 2),
+	(&#x27;2024-02-05&#x27;, &#x27;2024-05-12&#x27;, &#x27;2024-05-18&#x27;, &#x27;AD&#x27;, 21, 1500, 3, 3);
+	
+	INSERT INTO factura (data_emisio, metode_pagament, base_imposable, IVA, total, id_reserva) VALUES
+	(&#x27;2024-02-07&#x27;, &#x27;Targeta de crèdit&#x27;, 500, 50, 550, 1),
+	(&#x27;2024-02-08&#x27;, &#x27;Transferència&#x27;, 850, 85, 935, 2),
+	(&#x27;2024-02-09&#x27;, &#x27;Efectiu&#x27;, 1500, 315, 1815, 3);
+	
+	INSERT INTO tasca (descripcio, data_creacio, data_ejecucio, estat) VALUES
+	(&#x27;Neteja de l\&#x27;habitació 101&#x27;, &#x27;2024-02-07&#x27;, &#x27;2024-02-08&#x27;, &#x27;Completada&#x27;),
+	(&#x27;Revisió del minibar 202&#x27;, &#x27;2024-02-07&#x27;, &#x27;2024-02-09&#x27;, &#x27;En procés&#x27;),
+	(&#x27;Manteniment de la calefacció&#x27;, &#x27;2024-02-06&#x27;, &#x27;2024-02-10&#x27;, &#x27;Pendent&#x27;);
+	
+	INSERT INTO realitzar (id_tasca, id_empleat) VALUES
+	(1, 1),
+	(2, 2),
+	(3, 3);</code></pre><h2 id="19ff67f9-10dd-8081-9334-d8f6221fcd66" class="">Diagrama UML</h2><figure id="1b6f67f9-10dd-80cc-a84f-f74756632831" class="image"><a href="UML_HOTEL_(1).jpg"><img style="width:709.9861450195312px" src="UML_HOTEL_(1).jpg"/></a></figure><p id="1a0f67f9-10dd-80b9-b92e-f3292722f68f" class="">
+	</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

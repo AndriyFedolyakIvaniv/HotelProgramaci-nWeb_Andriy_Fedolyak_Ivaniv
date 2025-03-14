@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Tarea</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <ul class="menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="base_de_datos.html">Base de datos</a></li>
+            <li><a href="problemas.html">Problemas</a></li>
+            <li>
+                <a href="#">Controles</a>
+                <ul class="submenu">
+                    <li><a href="control1.html">Registro</a></li>
+                    <li><a href="control2.html">Reserva</a></li>
+                    <li><a href="control3.html">Factura</a></li>
+                    <li><a href="control5.html">Modificar Tarea</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Creación de Tareas</h1>
+        <p>El módulo de creación de tareas permite a los administradores o empleados asignar nuevas actividades a los trabajadores. Este proceso garantiza la correcta distribución del trabajo y facilita la gestión de tareas en el sistema.</p>
+
+        <h2>Paso 1: Selección del Empleado</h2>
+        <p>El primer paso es seleccionar al empleado que será responsable de la tarea. Para ello, el sistema mostrará una lista de empleados disponibles. Es importante elegir cuidadosamente al trabajador adecuado para garantizar la correcta ejecución de la tarea.</p>
+
+        <div class="image-frame">
+            <img src="Imagen/crTasca1.png" alt="Formulario de selección de empleado">
+        </div>
+
+        <div class="image-frame">
+            <img src="Imagen/crTasca2.png" alt="Selección del empleado encargado de la tarea">
+        </div>
+
+        <h2>Paso 2: Definir la Fecha de Ejecución</h2>
+        <p>Una vez seleccionado el empleado, se debe establecer la fecha en la que se llevará a cabo la tarea. El usuario deberá indicar el día y la hora en que la actividad deberá completarse.</p>
+
+        <div class="image-frame">
+            <img src="Imagen/crTasca3.png" alt="Selección de fecha de ejecución">
+        </div>
+
+        <h2>Paso 3: Asignación del Estado de la Tarea</h2>
+        <p>El sistema permite asignar un estado a la tarea para su correcto seguimiento. Se pueden seleccionar las siguientes opciones:</p>
+        <ul>
+            <li><strong>Pendiente:</strong> La tarea aún no ha comenzado.</li>
+            <li><strong>En proceso:</strong> La tarea está actualmente en ejecución.</li>
+        </ul>
+        <p>Asignar un estado permite a los supervisores hacer seguimiento del avance de la tarea y gestionar mejor el flujo de trabajo.</p>
+
+        <div class="image-frame">
+            <img src="Imagen/crTasca4.png" alt="Selección del estado de la tarea">
+        </div>
+
+        <h2>Paso 4: Descripción de la Tarea</h2>
+        <p>En este paso, el usuario debe proporcionar una descripción clara y detallada de la tarea. Se deben incluir:</p>
+        <ul>
+            <li><strong>Objetivo de la tarea:</strong> Qué se debe lograr.</li>
+            <li><strong>Instrucciones específicas:</strong> Pasos detallados a seguir.</li>
+            <li><strong>Recursos necesarios:</strong> Materiales, herramientas o información requerida.</li>
+            <li><strong>Fecha límite:</strong> Si aplica, indicar cuándo debe finalizarse.</li>
+        </ul>
+
+        <div class="image-frame">
+            <img src="Imagen/crTasca5.png" alt="Descripción de la tarea">
+        </div>
+
+        <h2>Paso 5: Creación de la Tarea</h2>
+        <p>Una vez que todos los datos han sido ingresados correctamente, el usuario debe hacer clic en el botón <strong>"Crear tarea"</strong>. El sistema validará la información y, si todos los campos están completos, la tarea será registrada y asignada al empleado seleccionado.</p>
+
+        <div class="image-frame">
+            <img src="Imagen/crTasca6.png" alt="Botón para crear la tarea">
+        </div>
+
+        <p>Si algún campo obligatorio no ha sido completado, el sistema mostrará una advertencia y no permitirá la creación de la tarea hasta que se corrija el error.</p>
+
+        <div class="image-frame">
+            <img src="Imagen/crTasca7.png" alt="Error al intentar crear la tarea sin completar los campos">
+        </div>
+
+        <h2>Errores Comunes y Soluciones</h2>
+        <ul>
+            <li><strong>No se puede seleccionar un empleado:</strong> Asegurarse de que el usuario tiene permisos para asignar tareas.</li>
+            <li><strong>No se permite una fecha anterior a la actual:</strong> Verificar que la fecha de ejecución sea futura.</li>
+            <li><strong>La tarea no se guarda:</strong> Revisar que todos los campos obligatorios estén completos.</li>
+        </ul>
+
+        <h2>Conclusión</h2>
+        <p>Con estos pasos, la tarea quedará registrada en el sistema y el empleado podrá iniciar su ejecución. La asignación de tareas de manera eficiente mejora la gestión del trabajo y el control de las actividades laborales.</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <ul class="menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="base_de_datos.html">Base de datos</a></li>
+            <li><a href="problemas.html">Problemas</a></li>
+            <li>
+                <a href="#">Controles</a>
+                <ul class="submenu">
+                    <li><a href="control2.html">Reserva</a></li>
+                    <li><a href="control3.html">Factura</a></li>
+                    <li><a href="control4.html">Crear Tarea</a></li>
+                    <li><a href="control5.html">Modificar Tarea</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Registro</h1>
+        <p>El proceso de registro es el primer paso para acceder y utilizar el sistema. A través de este procedimiento, los usuarios pueden crear una cuenta proporcionando la información necesaria según su rol dentro de la plataforma. Es fundamental que los datos se introduzcan correctamente, ya que estos serán utilizados para la autenticación, comunicación y administración dentro del sistema.</p>
+
+        <h2>Paso 1: Ingreso de Datos Básicos</h2>
+        <p>El primer paso del registro consiste en completar un formulario con la información personal del usuario. Se deben ingresar los siguientes datos:</p>
+        <ul>
+            <li><strong>Nombre y apellido:</strong> Identificación personal del usuario.</li>
+            <li><strong>Correo electrónico:</strong> Dirección de email válida para notificaciones y recuperación de cuenta.</li>
+            <li><strong>Número de teléfono:</strong> Medio de contacto alternativo.</li>
+        </ul>
+        <p>Es importante que estos datos sean correctos, ya que serán utilizados para futuras comunicaciones y acceso al sistema.</p>
+        <div class="image-frame">
+            <img src="Imagen/registro1.png" alt="Formulario de registro inicial">
+        </div>
+
+        <h2>Paso 2: Selección del Tipo de Cuenta</h2>
+        <p>Una vez ingresados los datos personales, el siguiente paso es definir el tipo de cuenta que se creará. El sistema permite dos opciones:</p>
+        <ul>
+            <li><strong>Empleado:</strong> Usuarios que forman parte del equipo de trabajo de la empresa y necesitan acceso a funciones administrativas.</li>
+            <li><strong>Cliente:</strong> Usuarios externos que utilizarán el sistema para reservas, facturación u otros servicios.</li>
+        </ul>
+        <p>En caso de que un usuario desempeñe ambos roles (empleado y cliente), el sistema permite seleccionar ambas opciones simultáneamente.</p>
+        <div class="image-frame">
+            <img src="Imagen/registro2.png" alt="Selección de tipo de cuenta">
+        </div>
+
+        <h2>Paso 3: Completar Información Adicional Según el Tipo de Usuario</h2>
+        <p>Dependiendo del tipo de cuenta seleccionado, el sistema solicitará información adicional específica.</p>
+
+        <h3>Registro de Empleado</h3>
+        <p>Si el usuario se registra como <strong>Empleado</strong>, deberá completar los siguientes campos adicionales:</p>
+        <ul>
+            <li><strong>Número de identificación de empleado:</strong> Código único asignado a cada trabajador.</li>
+            <li><strong>Estado:</strong> Estado en que se encuentra en la empresa.</li>
+            <li><strong>Fecha de ingreso:</strong> Día en que el empleado se unió a la organización.</li>
+        </ul>
+        <p>Estos datos son esenciales para la gestión de personal y asignación de tareas dentro del sistema.</p>
+        <div class="image-frame">
+            <img src="Imagen/registro4.png" alt="Formulario de registro para empleados">
+        </div>
+
+        <h3>Registro de Cliente</h3>
+        <p>Si el usuario se registra como <strong>Cliente</strong>, deberá proporcionar la siguiente información:</p>
+        <ul>
+            <li><strong>Data de registro</strong> Cuando se registra el cliente</li>
+            <li><strong>Tarjeta de cliente</strong> Para poder verificar cada uno de los clientes</li>
+            <li><strong>Tipo de cliente:</strong> Categoría según su relación con la empresa (frecuente, nuevo, empresa, etc.).</li>
+        </ul>
+        <p>Estos datos permiten ofrecer una experiencia personalizada y optimizar la gestión de clientes.</p>
+        <div class="image-frame">
+            <img src="Imagen/registro3.png" alt="Formulario de registro para clientes">
+        </div>
+
+        <h2>Paso 4: Visualización de Usuarios Registrados</h2>
+        <p>El sistema cuenta con una función que permite visualizar la lista de usuarios registrados. Esta opción es útil para:</p>
+        <ul>
+            <li>Administradores que desean gestionar el acceso al sistema.</li>
+            <li>Supervisores que necesitan monitorear el personal registrado.</li>
+            <li>Verificación rápida de datos en caso de errores o duplicados.</li>
+        </ul>
+        <p>La lista de usuarios se actualiza automáticamente tras cada nuevo registro.</p>
+        <div class="image-frame">
+            <img src="Imagen/registro5.png" alt="Lista de usuarios registrados">
+        </div>
+
+        <h2>Paso 5: Finalización del Registro</h2>
+        <p>Una vez completados todos los campos requeridos, el usuario debe confirmar el registro haciendo clic en el botón <strong>"Añadir"</strong>. Al hacerlo, el sistema validará la información ingresada y procederá a almacenar los datos en la base de datos.</p>
+        <div class="image-frame">
+            <img src="Imagen/registro6.png" alt="Botón de finalización del registro">
+        </div>
+
+        <h3>Errores Comunes y Soluciones</h3>
+        <p>Si el sistema detecta algún error en el proceso de registro, mostrará un mensaje indicando el problema. Algunos errores comunes incluyen:</p>
+        <ul>
+            <li><strong>Campos vacíos:</strong> Todos los campos obligatorios deben completarse antes de finalizar el registro.</li>
+            <li><strong>Correo electrónico inválido:</strong> Se debe ingresar una dirección de email en formato correcto.</li>
+            <li><strong>Número de teléfono incorrecto:</strong> Debe contener solo dígitos y tener la longitud adecuada.</li>
+        </ul>
+        <p>Si aparece un mensaje de error, el usuario debe corregir los datos y volver a intentar el registro.</p>
+
+        <h2>Conclusión</h2>
+        <p>El proceso de registro es esencial para acceder a todas las funciones del sistema. Siguiendo los pasos correctamente, los usuarios pueden asegurarse de que su información se almacene de manera segura y puedan utilizar la plataforma sin inconvenientes.</p>
+        <p>En caso de problemas durante el registro, es recomendable contactar con el soporte técnico o un administrador del sistema para recibir asistencia.</p>
+    </div>
+</body>
+</html>

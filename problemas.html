@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problemas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <ul class="menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="base_de_datos.html">Base de datos</a></li>
+            <li>
+                <a href="#">Controles</a>
+                <ul class="submenu">
+                    <li><a href="control1.html">Registro</a></li>
+                    <li><a href="control2.html">Reservas</a></li>
+                    <li><a href="control3.html">Facturas</a></li>
+                    <li><a href="control4.html">Crear Tareas</a></li>
+                    <li><a href="control5.html">Modificar Tareas</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+<div class="container">
+    <h1>Errores del Proyecto</h1>
+    <p>Aquí se documentan los errores encontrados durante el desarrollo del proyecto, junto con sus soluciones.</p>
+    <div class="error-list">
+        <div class="error-item">
+            <h2>Error 1: [Solucionar la consulta]</h2>
+            <p><strong>Problema:</strong> [El problema principal era que necesitabas seleccionar el nombre y apellido de la tabla persona junto con el ID de la tabla empleat para mostrar la información completa de los empleados. Inicialmente, solo estabas seleccionando el nombre de la tabla empleat, lo que no era suficiente para tus necesidades.]</p>
+            <p><strong>Solución:</strong> [Se implementó una consulta SQL con un JOIN entre las tablas empleat y persona para obtener el id_empleat, nom y cognom. Esto permitió combinar los datos de ambas tablas y mostrar la información completa de los empleados en el formato ID - Nombre Apellido.]</p>
+        </div>
+        <div class="error-item">
+            <h2>Error 2: [BorderPane]</h2>
+            <p><strong>Problema:</strong> [El problema principal era que al cargar la vista del registro, el MenuBar desaparecía. Esto ocurría porque al cargar la nueva escena, reemplazabas todo el contenido de la ventana, incluyendo el MenuBar, en lugar de solo actualizar el contenido central dentro del BorderPane.]</p>
+            <p><strong>Solución:</strong> [En lugar de reemplazar toda la escena, se modificó el código para cargar solo el AnchorPane del registro dentro del contingutCentral (la parte central del BorderPane). Esto se logró obteniendo el nodo desde el archivo FXML del registro y estableciéndolo como hijo del AnchorPane ya existente. De esta manera, el MenuBar se mantiene visible mientras se actualiza solo el contenido central.]</p>
+        </div>
+        <div class="error-item">
+            <h2>Error 3: [assignarEmpleatTasca()]</h2>
+            <p><strong>Problema:</strong> [El método assignarEmpleatTasca() recibía directamente los valores de empleatsSeleccionats, que antes eran IDs. Pero con los cambios, ahora eran nombres, lo que causaba un error al insertar en la base de datos.]</p>
+            <p><strong>Solución:</strong> [La solución ha sido añadir las dos cosas, el id_empleat y tambien en nombre/apellido del empleado a traves de la tabla de persona. Y cargarlo segun sus Id's.]</p>
+        </div>
+        <div class="error-item">
+            <h2>Error 4: [assignarEmpleatTasca()]</h2>
+            <p><strong>Problema:</strong> [El método assignarEmpleatTasca() recibía directamente los valores de empleatsSeleccionats, que antes eran IDs. Pero con los cambios, ahora eran nombres, lo que causaba un error al insertar en la base de datos.]</p>
+            <p><strong>Solución:</strong> [La solución ha sido añadir las dos cosas, el id_empleat y tambien en nombre/apellido del empleado a traves de la tabla de persona. Y cargarlo segun sus Id's.]</p>
+        </div>
+        <div class="error-item">
+            <h2>Error 5: [Guardar empleados/clientes]</h2>
+            <p><strong>Problema:</strong> [El método diseñado para añadir empleados y clientes a la base de datos no funcionaba correctamente, ya que no insertaba los datos en las tablas correspondientes. Esto se debía a un desajuste entre los nombres de los atributos utilizados en el código y los nombres de las columnas en la base de datos. Como resultado, los datos no se guardaban, lo que impedía la creación de nuevos registros.]</p>
+            <p><strong>Solución:</strong> [Para resolver el problema, se revisó y corrigió el código para asegurar que los nombres de los atributos coincidieran exactamente con los nombres de las columnas en la base de datos. Además, se verificó que los tipos de datos y el orden de los parámetros en la consulta SQL fueran consistentes con la estructura de la tabla. Una vez realizadas estas correcciones, el método funcionó correctamente y los datos se insertaron sin problemas en la base de datos.]</p>
+        </div>
+        <div class="error-item">
+            <h2>Error 6: [parseDouble]</h2>
+            <p><strong>Problema:</strong> [El problema principal era que intentabas parsear un valor numérico que contenía una coma (,) como separador decimal utilizando Double.parseDouble(). En Java, este método espera que el separador decimal sea un punto (.), lo que provocaba un NumberFormatException al intentar convertir un valor como "1348,20" a un número.]</p>
+            <p><strong>Solución:</strong> [Se corrigió el problema reemplazando la coma (,) por un punto (.) antes de realizar el parseo. Esto se logró utilizando el método replace(",", ".") en las cadenas de texto obtenidas de los campos txtBaseImposable, txtIVA y txtTotal. De esta manera, el formato del número se ajustó al estándar esperado por Double.parseDouble(), permitiendo la conversión correcta.]</p>
+        </div>
+        <div class="error-item">
+            <h2>Error 7: [Subcosulta]</h2>
+            <p><strong>Problema:</strong> [El problema principal era que una subconsulta en la consulta SQL estaba devolviendo más de una fila cuando se esperaba que devolviera un solo valor. Esto ocurría al intentar guardar una reserva en la base de datos, específicamente en la subconsulta utilizada para obtener el ID del cliente. Esto provocaba un error de SQL (java.sql.SQLException: Subquery returns more than 1 row), ya que la subconsulta no estaba limitada a devolver un único resultado.]</p>
+            <p><strong>Solución:</strong> [Se corrigió la consulta SQL limitando la subconsulta a devolver solo una fila utilizando LIMIT 1. Esto asegura que, incluso si hay múltiples coincidencias en la tabla de clientes, solo se seleccione el primer resultado. Además, se verificó la lógica de la subconsulta para garantizar que se utilice un campo único (como el ID o un campo con valores únicos) en lugar de un campo que pueda tener duplicados (como el nombre).]</p>
+        </div>
+        <div class="error-item">
+            <h2>Error 8: [Exclusión de estado COMPLETADA en ComboBox]</h2>
+            <p><strong>Problema:</strong> [El problema principal era que el ComboBox para seleccionar el estado de la tarea mostraba todos los valores del enum `Estat_Tasca`, incluyendo "COMPLETADA", cuando solo se necesitaban los estados "PENDENT" y "EN PROCES". Esto resultaba en una opción innecesaria para el usuario, lo que podía llevar a confusión al momento de asignar el estado de una tarea.]</p>
+            <p><strong>Solución:</strong> [Se actualizó el código para filtrar los valores del enum `Estat_Tasca` en el ComboBox, de modo que solo se muestren los estados "PENDENT" y "EN PROCES". Esto se logró utilizando el método `FXCollections.observableArrayList` para incluir solo los valores necesarios del enum. Así se asegura que el ComboBox muestre solo las opciones relevantes para el usuario.]</p>
+        </div>
+        <div class="error-item">
+            <h2>Error 9: [Uso de enum para el método de pago]</h2>
+            <p><strong>Problema:</strong> [El código original usaba un `ComboBox<String>` con valores escritos manualmente como "Targeta de credit", "Transferencia", "Efectiu". Esto podía causar problemas si se escribían mal los valores o si había que hacer cambios. Además, no aprovechaba las ventajas de usar un tipo enum, que es más seguro y fácil de mantener.]</p>
+            <p><strong>Solución:</strong> [Se cambió el `ComboBox<String>` por `ComboBox<Metode_Pagament>`, que usa la enumeración `Metode_Pagament`. Ahora se cargan automáticamente los métodos de pago desde el enum con `FXCollections.observableArrayList(Metode_Pagament.values())`, evitando errores al escribir. También se guardan los métodos de pago de manera más segura usando `metodoPagoSeleccionado.getNomMetode_Pagament()` para obtener el valor correcto.]</p>
+        </div>    
+        <div class="error-item">
+            <h2>Error 10: [Precios de reserva incorrectos]</h2>
+            <p><strong>Problema:</strong> [El código original no aseguraba que el precio de "AD" (Alojamiento y desayuno) fuera mayor que el de "MP" (Media pensión). Esto podía causar que el precio de "AD" fuera más bajo que el de "MP", lo cual no debería ser así.]</p>
+            <p><strong>Solución:</strong> [Se cambió el código para que, si el precio de "MP" es mayor que el de "AD", se ajuste automáticamente el precio de "AD" para que siempre sea mayor. Esto garantiza que los precios sean correctos y cumplan con la lógica de la reserva.]</p>
+        </div>
+        <div class="error-item">
+            <h2>Error 11: [Initialize]</h2>
+            <p><strong>Problema:</strong> [El método `initialize` no se ejecutaba correctamente porque estaba declarado como `private`. Debido a esto, el sistema de JavaFX no lo reconocía como un método de inicialización válido y no lo ejecutaba al cargar la interfaz.]</p>
+            <p><strong>Solución:</strong> [Para solucionar este problema, cambié la visibilidad del método de `private` a `public`. De esta manera, JavaFX pudo detectar y ejecutar correctamente el método `initialize` al cargar el controlador.]</p>
+        </div>
+        <div class="error-item">
+            <h2>Error 12: [Conexión]</h2>
+            <p><strong>Problema:</strong> [Inicialmente, no comprendía bien cómo gestionar la conexión con la base de datos dentro de mi aplicación. En lugar de utilizar una única instancia de conexión compartida, estaba estableciendo una nueva conexión en cada método del modelo, lo que resultaba en una sobrecarga innecesaria y posibles problemas de rendimiento.]</p>
+            <p><strong>Solución:</strong> [Para corregir este error, aprendí a utilizar correctamente la clase de conexión. Implementé una gestión de conexiones eficiente, asegurando que la base de datos solo se conecte una vez y que la misma conexión se reutilice en los distintos métodos del modelo. Esto optimizó el rendimiento y evitó problemas de gestión de recursos.]</p>
+        </div>
+        
+    </div>
+</div>
+</body>
+</html>
