@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reserva</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <nav>
         <ul class="menu">
@@ -25,24 +27,34 @@
     </nav>
     <div class="container">
         <h1>Reserva</h1>
-        <p>El módulo de reservas permite a los usuarios gestionar y realizar reservas de forma sencilla dentro del sistema. Este proceso es fundamental para garantizar la disponibilidad y correcta asignación de servicios. A continuación, se explican detalladamente los pasos necesarios para realizar una reserva con éxito, así como las opciones disponibles y los posibles errores que pueden surgir.</p>
+        <p>El módulo de reservas permite a los usuarios gestionar y realizar reservas de forma sencilla dentro del
+            sistema. Este proceso es fundamental para garantizar la disponibilidad y correcta asignación de servicios. A
+            continuación, se explican detalladamente los pasos necesarios para realizar una reserva con éxito, así como
+            las opciones disponibles y los posibles errores que pueden surgir.</p>
 
         <h2>Paso 1: Acceso al Formulario de Reserva</h2>
-        <p>El usuario debe acceder a la sección de reservas, donde se encontrará con un formulario que permitirá la configuración de los detalles de la reserva. En este punto, es importante proporcionar la información correctamente, ya que esto afectará la disponibilidad y el correcto procesamiento de la solicitud.</p>
+        <p>El usuario debe acceder a la sección de reservas, donde se encontrará con un formulario que permitirá la
+            configuración de los detalles de la reserva. En este punto, es importante proporcionar la información
+            correctamente, ya que esto afectará la disponibilidad y el correcto procesamiento de la solicitud.</p>
 
         <div class="image-frame">
             <img src="Imagen/reserva1.png" alt="Formulario de inicio de la reserva">
         </div>
 
         <h2>Paso 2: Selección de la Persona</h2>
-        <p>El siguiente paso es elegir a la persona para la cual se va a realizar la reserva. Para ello, el sistema desplegará un listado con los nombres de los usuarios registrados, permitiendo la selección del usuario correspondiente. Este paso es esencial para que el sistema asocie la reserva con la persona adecuada y evite confusiones en la gestión.</p>
-        
+        <p>El siguiente paso es elegir a la persona para la cual se va a realizar la reserva. Para ello, el sistema
+            desplegará un listado con los nombres de los usuarios registrados, permitiendo la selección del usuario
+            correspondiente. Este paso es esencial para que el sistema asocie la reserva con la persona adecuada y evite
+            confusiones en la gestión.</p>
+
         <div class="image-frame">
             <img src="Imagen/reserva2.png" alt="Selección de persona para la reserva">
         </div>
 
         <h2>Paso 3: Configuración de Fechas</h2>
-        <p>El usuario deberá seleccionar la fecha de inicio y finalización de la reserva a través del calendario interactivo proporcionado por el sistema. Es importante asegurarse de que las fechas sean correctas y coherentes con la disponibilidad del servicio o la habitación.</p>
+        <p>El usuario deberá seleccionar la fecha de inicio y finalización de la reserva a través del calendario
+            interactivo proporcionado por el sistema. Es importante asegurarse de que las fechas sean correctas y
+            coherentes con la disponibilidad del servicio o la habitación.</p>
 
         <div class="image-frame">
             <img src="Imagen/reserva3.png" alt="Selección de fechas de inicio y fin de la reserva">
@@ -53,28 +65,44 @@
         </div>
 
         <h3>Errores Comunes en la Selección de Fechas</h3>
-        <p>Si el usuario selecciona una fecha de finalización anterior a la fecha de inicio, el sistema generará un mensaje de error, indicando que la configuración es incorrecta. Para corregirlo, el usuario deberá seleccionar una fecha de finalización válida.</p>
+        <p>Si el usuario selecciona una fecha de finalización anterior a la fecha de inicio, el sistema generará un
+            mensaje de error, indicando que la configuración es incorrecta. Para corregirlo, el usuario deberá
+            seleccionar una fecha de finalización válida.</p>
 
         <div class="image-frame">
             <img src="Imagen/reserva5.png" alt="Mensaje de error por fecha de fin incorrecta">
         </div>
 
+        <h3>No se puede reservar en las mismas fechas de una reserva ya existente</h3>
+        <p>Si el usuario intenta realizar una nueva reserva en las mismas fechas que ya están ocupadas por una reserva
+            existente, el sistema generará un mensaje de error indicando que las fechas seleccionadas ya están
+            reservadas. Para proceder, el usuario deberá seleccionar un rango de fechas diferente y disponible.</p>
+
+        <div class="image-frame">
+            <img src="Imagen/reserva9.png" alt="Mensaje de error por fechas de reserva coincidentes">
+        </div>
+
+
         <h2>Paso 4: Selección del Tipo de Reserva</h2>
-        <p>El usuario podrá seleccionar el tipo de reserva que mejor se ajuste a sus necesidades. Existen diferentes opciones, entre ellas:</p>
+        <p>El usuario podrá seleccionar el tipo de reserva que mejor se ajuste a sus necesidades. Existen diferentes
+            opciones, entre ellas:</p>
         <ul>
             <li><strong>AD (Alojamiento y Desayuno):</strong> Incluye estancia y desayuno.</li>
             <li><strong>MP (Media Pensión):</strong> Incluye estancia, desayuno y una comida.</li>
         </ul>
 
         <h2>Paso 5: Confirmación de la Reserva</h2>
-        <p>Una vez que todos los parámetros han sido configurados correctamente, el usuario deberá hacer clic en el botón <strong>"Crear reserva"</strong>. Al hacerlo, el sistema validará la información y, si todo es correcto, procederá a registrar la reserva en la base de datos.</p>
+        <p>Una vez que todos los parámetros han sido configurados correctamente, el usuario deberá hacer clic en el
+            botón <strong>"Crear reserva"</strong>. Al hacerlo, el sistema validará la información y, si todo es
+            correcto, procederá a registrar la reserva en la base de datos.</p>
 
         <div class="image-frame">
             <img src="Imagen/reserva7.png" alt="Botón para crear la reserva">
         </div>
 
         <h2>Paso 6: Generación Automática de Factura</h2>
-        <p>Una vez creada la reserva, el sistema generará automáticamente una factura detallada con el costo total de la estancia. Esta factura incluirá un desglose de precios basado en:</p>
+        <p>Una vez creada la reserva, el sistema generará automáticamente una factura detallada con el costo total de la
+            estancia. Esta factura incluirá un desglose de precios basado en:</p>
         <ul>
             <li><strong>Duración de la estancia:</strong> Número de noches reservadas.</li>
             <li><strong>Tipo de reserva:</strong> Servicios adicionales incluidos.</li>
@@ -82,22 +110,30 @@
         <p>El usuario podrá revisar la factura antes de proceder con el pago.</p>
 
         <h2>Paso 8: Confirmación Final del Precio</h2>
-        <p>Después de generar la reserva y la factura, el sistema mostrará un mensaje con el precio total a pagar. El usuario deberá revisar este monto y confirmar la información antes de proceder con el pago.</p>
+        <p>Después de generar la reserva y la factura, el sistema mostrará un mensaje con el precio total a pagar. El
+            usuario deberá revisar este monto y confirmar la información antes de proceder con el pago.</p>
 
         <div class="image-frame">
             <img src="Imagen/reserva8.png" alt="Aviso con el precio total de la reserva">
         </div>
 
         <h2>Errores Comunes y Soluciones</h2>
-        <p>Durante el proceso de reserva, pueden presentarse algunos errores comunes. A continuación, se detallan los más frecuentes y cómo resolverlos:</p>
+        <p>Durante el proceso de reserva, pueden presentarse algunos errores comunes. A continuación, se detallan los
+            más frecuentes y cómo resolverlos:</p>
         <ul>
-            <li><strong>Fechas incorrectas:</strong> Asegúrese de que la fecha de finalización sea posterior a la de inicio.</li>
-            <li><strong>Usuario no encontrado:</strong> Si la persona no aparece en la lista, verifique que haya sido registrada correctamente.</li>
-            <li><strong>Tipo de habitación no disponible:</strong> Si la opción deseada no está disponible, pruebe con otra fecha o contacte con el soporte.</li>
+            <li><strong>Fechas incorrectas:</strong> Asegúrese de que la fecha de finalización sea posterior a la de
+                inicio.</li>
+            <li><strong>Usuario no encontrado:</strong> Si la persona no aparece en la lista, verifique que haya sido
+                registrada correctamente.</li>
+            <li><strong>Tipo de habitación no disponible:</strong> Si la opción deseada no está disponible, pruebe con
+                otra fecha o contacte con el soporte.</li>
         </ul>
 
         <h2>Conclusión</h2>
-        <p>Siguiendo estos pasos, el usuario podrá completar el proceso de reserva de manera eficiente y sin inconvenientes. En caso de dudas o problemas, es recomendable contactar con el equipo de soporte para recibir asistencia.</p>
+        <p>Siguiendo estos pasos, el usuario podrá completar el proceso de reserva de manera eficiente y sin
+            inconvenientes. En caso de dudas o problemas, es recomendable contactar con el equipo de soporte para
+            recibir asistencia.</p>
     </div>
 </body>
+
 </html>

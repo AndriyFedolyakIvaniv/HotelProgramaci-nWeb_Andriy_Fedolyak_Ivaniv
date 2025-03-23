@@ -82,6 +82,16 @@
             <p><strong>Problema:</strong> Se creaban múltiples conexiones en lugar de reutilizar una.</p>
             <p><strong>Solución:</strong> Se implementó una conexión única compartida para mejorar el rendimiento.</p>
         </div>
+        <div class="error-item">
+            <h2>Error 12: No comprobación del DNI, si ya existe</h2>
+            <p><strong>Problema:</strong> El sistema no verificaba si el DNI ya estaba registrado, lo que podía resultar en la creación de registros duplicados.</p>
+            <p><strong>Solución:</strong> Se implementó una validación previa para comprobar si el DNI ya existe en la base de datos, evitando así la creación de registros duplicados.</p>
+        </div>
+        <div class="error-item">
+            <h2>Error 13: Comprobación de las fechas de la reserva</h2>
+            <p><strong>Problema:</strong> El sistema no verificaba si las fechas de la nueva reserva coincidían con las fechas de una reserva ya existente, lo que podía generar conflictos o duplicados.</p>
+            <p><strong>Solución:</strong> Se implementó una validación para comprobar que las fechas seleccionadas no coincidan con las de una reserva ya existente, mostrando un mensaje de error si las fechas están ocupadas. El usuario deberá elegir un rango de fechas disponible para proceder con la reserva.</p>
+        </div>        
     </div>
 </div>
 </body>
